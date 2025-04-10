@@ -1,0 +1,40 @@
+<h2>Modifier une Tâche</h2>
+
+<form id="edit-task-form">
+
+    <input type="hidden" id="taskId" name="taskId" value="{{task.id}}">
+
+    <label for="title">Titre :</label>
+    <input type="text" id="title" name="title" value="{{task.title}}" required minlength="3" maxlength="100">
+
+    <label for="description">Description :</label>
+    <textarea id="description" name="description" required>{{task.description}}</textarea>
+
+    <label for="priority">Priorité :</label>
+    <select id="priority" name="priority" required>
+        <option value="1" {{#if (eq task.priority.id 1)}}selected{{/if}}>Faible</option>
+        <option value="2" {{#if (eq task.priority.id 2)}}selected{{/if}}>Moyenne</option>
+        <option value="3" {{#if (eq task.priority.id 3)}}selected{{/if}}>Élevée</option>
+    </select>
+
+    <label for="status">Statut :</label>
+    <select id="status" name="status" required>
+        <option value="1" {{#if (eq task.status.id 1)}}selected{{/if}}>À faire</option>
+        <option value="2" {{#if (eq task.status.id 2)}}selected{{/if}}>En cours</option>
+        <option value="3" {{#if (eq task.status.id 3)}}selected{{/if}}>En révision</option>
+        <option value="4" {{#if (eq task.status.id 4)}}selected{{/if}}>Terminé</option>
+    </select>
+
+    <label for="dueDate">Date de mise à jour:</label>
+    <input type="date" id="dueDate" name="dueDate" required >
+
+    <label for="assignedTo">Assigné à :</label>
+    <select id="assignedTo" name="assignedTo" required>
+        <option value="1" {{#if (eq task.assignedTo.id 1)}}selected{{/if}}>nana</option>
+      
+    </select>
+
+
+    <button type="submit">Modifier la tâche</button>
+</form>
+

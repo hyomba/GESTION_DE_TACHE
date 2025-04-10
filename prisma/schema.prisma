@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Le modèle pour l'utilisateur
+model User {
+  id              Int            @id @default(autoincrement()) 
+  username        String         @unique                      
+  email           String?        @unique                     
+  password        String 
+  type            String?                                    
+  tasks           Task[]         @relation("AssignedTasks")   
+  modifiedTasks   TaskHistory[]  @relation("ModifiedByUser")  
+}
+
+// Le modèle pour la tâche
+model Task {
+  id              Int            @id @default(autoincrement())
+  title           String                                      
+  description     String                                      
+  priority        Priority       @relation(fields: [priorityId], references: [id], onDelete: Cascade)
+  priorityId      Int                                         
+  dueDate         DateTime                                    
+  status          Status        @relation(fields: [statusId], references: [id], onDelete: Cascade)
+  statusId        Int                                         
+  assignedTo      User          @relation("AssignedTasks", fields: [assignedToId], references: [id], onDelete: Cascade)
+  assignedToId    Int                                         
+  createdAt       DateTime      @default(now())               
+  history         TaskHistory[] @relation("TaskTaskHistory")      
+}
+
+
+// Le modèle pour l'historique des tâches
+model TaskHistory {
+  id              Int      @id @default(autoincrement())
+  taskId          Int
+  modifiedById    Int
+  changeDescription String
+  modifiedAt      DateTime @default(now())
+  oldTitle        String?
+  oldDescription  String?
+  oldStatus       String?
+  oldPriority     String?
+  modifiedBy      User @relation("ModifiedByUser", fields: [modifiedById], references: [id])
+  task            Task @relation("TaskTaskHistory", fields: [taskId], references: [id]) 
+}
+
+
+// Le modèle pour la priorité des tâches
+model Priority {
+  id          Int      @id @default(autoincrement()) 
+  name        String                                
+  tasks       Task[]                               
+}
+
+// Le modèle pour le statut des tâches
+model Status {
+  id          Int      @id @default(autoincrement()) 
+  name        String                                
+  tasks       Task[]                               
+}

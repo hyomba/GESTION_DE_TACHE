@@ -1,5 +1,141 @@
-h1 {
- color: blue;
- font-size: large;
- font-weight: 800;
+/* Style du header */
+header {
+    background-color: #2d3748;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: 90px;
+}
+
+/* Logo */
+header .logo {
+    width: 70px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+/* Titre principal */
+header h1 {
+    color: whitesmoke;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Conteneur de la navigation */
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Icônes de navigation */
+header nav a img.icons {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+header nav a img.icons:hover {
+    transform: scale(1.2);
+}
+
+/* Bouton de déconnexion */
+header nav form {
+    margin: 0;
+}
+
+header nav input[type="submit"] {
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+header nav input[type="submit"]:hover {
+    background-color: #c53030;
+    transform: scale(1.05);
+}
+
+/* Lien Connexion si non connecté */
+header nav a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+header nav a:hover {
+    background-color: #667eea;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    header nav {
+        justify-content: center;
+        gap: 0.8rem;
+    }
+
+    header nav a img.icons {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Footer inchangé */
+footer {
+    background-color: #2d3748;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+footer p:hover {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+@media (max-width: 640px) {
+    footer {
+        padding: 1.5rem 1rem;
+        margin-top: 2rem;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
 }
