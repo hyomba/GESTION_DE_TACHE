@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             priorityId,
             statusId,
             assignedToId,
-            dueDate: new Date(dueDate), // Convertir en objet Date
+            dueDate: new Date(dueDate), 
         };
     }
 

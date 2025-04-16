@@ -62,7 +62,7 @@ app.use(json());
 app.use(
     session({
         cookie: { maxAge: 3600000 },
-        name: "nana",//process.env.npm_package_name,
+        name: process.env.npm_package_name,
         store: new MemoryStore({ checkPeriod: 3600000 }),
         resave: false,
         saveUninitialized: false,

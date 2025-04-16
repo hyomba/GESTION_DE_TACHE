@@ -172,11 +172,13 @@ router.get("/Profil", async (request, response) => {
 });
 
 router.get("/task", async (request, response) => {
+  const user = request.user;
   response.render("create-task", {
     titre: "Créer une tâche | Gestion des tâches",
     styles: ["/css/create.css"],
     scripts: ["/js/create-task.js"],
     user: request.user,
+    user: user,
   });
 });
 
@@ -204,6 +206,7 @@ router.get("/edit/:id", async (request, response) => {
       task: task,
       user: user,
       user:request.user,
+      userId: request.user.id,
     });
   } catch (error) {
     console.error("Erreur :", error);

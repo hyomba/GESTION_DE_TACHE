@@ -10,7 +10,8 @@ document.getElementById('edit-task-form').addEventListener('submit', async funct
     const dueDate = document.getElementById('dueDate').value;
     const assignedTo = document.getElementById('assignedTo').value;
    // const changeDescription = document.getElementById('changeDescription').value;
-    const modifiedById = 1; 
+    //const modifiedById = 1; 
+    const modifiedById =  parseInt(document.getElementById('userId').value);
 
   //validation
   

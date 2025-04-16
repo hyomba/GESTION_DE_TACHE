@@ -28,9 +28,11 @@
     <label for="dueDate">Date de mise à jour:</label>
     <input type="date" id="dueDate" name="dueDate" required >
 
+    <input type="hidden" id="userId" value="{{userId}}">
+
     <label for="assignedTo">Assigné à :</label>
     <select id="assignedTo" name="assignedTo" required>
-        <option value="1" {{#if (eq task.assignedTo.id 1)}}selected{{/if}}>nana</option>
+        <option value="{{user.id}}" {{#if (eq task.assignedTo.id user.id)}}selected{{/if}}>{{user.username}}</option>
       
     </select>
 

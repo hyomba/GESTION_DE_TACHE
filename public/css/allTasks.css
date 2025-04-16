@@ -1,4 +1,5 @@
 main {
+  background: #c1d9ec;
   display: flex;
   justify-content: center; 
   gap: 20px;
