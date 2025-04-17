@@ -225,12 +225,8 @@ export const getTaskByUser = async (id) => {
                 },
             },
         });
-       // console.log("Tâches récupérées :", tasks);
-        // Vérification si des tâches sont trouvées
-        if (!tasks || tasks.length === 0) {
-            throw new Error("Aucune tâche trouvée pour cet utilisateur");
-        }
-        return tasks;
+       
+        return tasks|| [];
     } catch (error) {
         console.error("Erreur lors de la récupération des tâches de l'utilisateur :", error);
         throw new Error("Impossible de récupérer les tâches de l'utilisateur");
